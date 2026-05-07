@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salsabila Emma — Web Developer & AI Content Producer</title>
+  <meta name="description" content="Portfolio of Salsabila Emma Nurrachmaddanie — Full-Stack Web Developer & AI Content Producer based in Madiun, Indonesia.">
+
+  <link href="assets/img/devbyemm.png" rel="icon">
+  <link href="assets/img/devbyemm.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b14;
+      --surface: #0e1220;
+      --card: #131726;
+      --accent: #14d6a8;
+      --accent2: #f59e0b;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --border: rgba(255,255,255,0.07);
+      --nav-w: 270px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Syne', sans-serif; }
+
+    /* ── Sidebar nav ── */
+    #sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--nav-w);
+      height: 100vh;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 1.5rem;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      margin-bottom: 2.5rem;
+    }
+    .sidebar-logo span {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .sidebar-logo small {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-menu { list-style: none; flex: 1; }
+    .nav-menu li { margin-bottom: 4px; }
+    .nav-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+    }
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--accent);
+      background: rgba(20,214,168,0.08);
+    }
+    .nav-menu a i { font-size: 1.05rem; }
+
+    .sidebar-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+    .sidebar-socials a {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .sidebar-socials a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ── Mobile nav ── */
+    .mobile-nav-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem; right: 1rem;
+      z-index: 2000;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 42px; height: 42px;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* ── Main content ── */
+    #main {
+      margin-left: var(--nav-w);
+      min-height: 100vh;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 5rem 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,214,168,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-greeting {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .hero-name span { color: var(--accent); }
+
+    .hero-typed {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      min-height: 1.75rem;
+    }
+    .hero-typed .typed-cursor { color: var(--accent); }
+
+    .hero-desc {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary-custom {
+      background: var(--accent);
+      color: #080b14;
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary-custom:hover { background: #0fb890; color: #080b14; }
+
+    .btn-outline-custom {
+      background: transparent;
+      color: var(--text);
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .about-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 2rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .about-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+    .about-info-item i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
+    .about-info-item strong { color: var(--text); }
+    .about-info-item span { color: var(--muted); }
+
+    /* ── Skills ── */
+    .skills-group { margin-bottom: 2rem; }
+    .skills-group-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .skills-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .skill-tag.accent { border-color: rgba(20,214,168,0.3); color: var(--accent); background: rgba(20,214,168,0.06); }
+
+    /* ── Portfolio ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .portfolio-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+    .portfolio-card:hover {
+      border-color: rgba(20,214,168,0.3);
+      transform: translateY(-3px);
+    }
+
+    .portfolio-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: var(--surface);
+    }
+
+    .portfolio-thumb-placeholder {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--surface) 0%, var(--card) 100%);
+      font-size: 2.5rem;
+    }
+
+    .portfolio-body { padding: 1.25rem; }
+
+    .portfolio-category {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .portfolio-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .portfolio-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .portfolio-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+    .portfolio-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .portfolio-link {
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+    .portfolio-link:hover { text-decoration: underline; color: var(--accent); }
+
+    /* ── Resume Timeline ── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 2.25rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 8px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-period {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+    .timeline-company {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .timeline-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .timeline-desc li { margin-bottom: 3px; }
+
+    .resume-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+
+    /* ── Services ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      transition: all 0.25s;
+    }
+    .service-card:hover {
+      border-color: rgba(20,214,168,0.3);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(20,214,168,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+    .service-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .service-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 1.5rem;
+    }
+    .contact-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(20,214,168,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .contact-value { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+    .contact-value a { color: var(--accent); text-decoration: none; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
+    .footer-copy a { color: var(--accent); text-decoration: none; }
+
+    .portfolio-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .pf-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.82rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+    .pf-btn:hover, .pf-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(20,214,168,0.08); }
+    .portfolio-card.hidden { display: none; }
+
+    /* ── Back to top ── */
+    .back-top {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #080b14;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .back-top.show { opacity: 1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 991px) {
+      #sidebar { transform: translateX(-100%); transition: transform 0.3s; }
+      #sidebar.open { transform: translateX(0); }
+      #main { margin-left: 0; }
+      .mobile-nav-toggle { display: flex; }
+      section { padding: 3.5rem 1.5rem; }
+      footer { padding: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { width: 160px; height: 200px; }
+      .resume-cols { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Toggle -->
+  <button class="mobile-nav-toggle" id="navToggle">
+    <i class="bi bi-list" id="navIcon"></i>
+  </button>
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="sidebar-logo">
+      <span>devbyEmm</span>
+      <small>Portfolio 2025</small>
+    </div>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#hero" class="nav-link active"><i class="bi bi-house"></i> Home</a></li>
+      <li><a href="#about" class="nav-link"><i class="bi bi-person"></i> About</a></li>
+      <li><a href="#skills" class="nav-link"><i class="bi bi-code-slash"></i> Skills</a></li>
+      <li><a href="#portfolio" class="nav-link"><i class="bi bi-grid"></i> Portfolio</a></li>
+      <li><a href="#resume" class="nav-link"><i class="bi bi-file-earmark-text"></i> Resume</a></li>
+      <li><a href="#services" class="nav-link"><i class="bi bi-briefcase"></i> Services</a></li>
+      <li><a href="#contact" class="nav-link"><i class="bi bi-envelope"></i> Contact</a></li>
+    </ul>
+
+    <div class="sidebar-socials">
+      <a href="https://wa.me/6283155675867" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://www.instagram.com/salsabilaemma_/" title="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://github.com/SalsabilaEmma" title="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/salsabila-emma-982a5a186" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div data-aos="fade-up" data-aos-delay="50">
+        <p class="hero-greeting">👋 Welcome to my portfolio</p>
+        <h1 class="hero-name">Salsabila<br><span>Emma</span></h1>
+        <p class="hero-typed">
+          I'm <span class="typed" data-typed-items="Fullstack Web Developers, UI/UX Designer, Freelancer"></span>
+        </p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn-primary-custom">
+            <i class="bi bi-grid"></i> View Work
+          </a>
+          <a href="#contact" class="btn-outline-custom">
+            <i class="bi bi-envelope"></i> Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about">
+      <div data-aos="fade-up">
+        <p class="section-label">Who I am</p>
+        <h2 class="section-title">About Me</h2>
+      </div>
+
+      <div class="about-grid" data-aos="fade-up" data-aos-delay="100">
+        <div>
+          <img src="assets/img/1.jpg" alt="Salsabila Emma" class="about-photo">
+        </div>
+        <div>
+          <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.75rem;">
+            UI/UX Designer &amp; Web Developer.
+          </h3>
+          <p style="color: var(--muted); font-size:0.88rem; line-height:1.8; margin-bottom:1rem;">
+            Having an interest in web development, I started taking on freelance projects since my college days, and it has been ongoing until now.
+          </p>
+          <p style="color: var(--muted); font-size:0.88rem; line-height:1.8;">
+            Throughout my journey in web development, I have acquired proficiency in utilizing Frameworks such as Laravel for Backend Development and Next.js for Frontend Development. I also bring valuable experience as a UI/UX Designer to the table
+          </p>
+
+          <div class="about-info">
+            <div class="about-info-item">
+              <i class="bi bi-geo-alt"></i>
+              <div><strong>City:</strong><br><span>Madiun, East Java, Indonesia</span></div>
+            </div>
+            <div class="about-info-item">
+              <i class="bi bi-envelope"></i>
+              <div><strong>Email:</strong><br><span>devbyemm17@gmail.com</span></div>
+            </div>
+            <div class="about-info-item">
+              <i class="bi bi-phone"></i>
+              <div><strong>Phone:</strong><br><span>+62 831 5567 5867</span></div>
+            </div>
+            <div class="about-info-item">
+              <i class="bi bi-mortarboard"></i>
+              <div><strong>Degree:</strong><br><span>Diploma</span></div>
+            </div>
+            <div class="about-info-item">
+              <i class="bi bi-briefcase"></i>
+              <div><strong>Freelance:</strong><br><span style="color:var(--accent);">Available</span></div>
+            </div>
+            <div class="about-info-item">
+              <i class="bi bi-globe"></i>
+              <div><strong>Website:</strong><br><span><a href="https://github.com/SalsabilaEmma" style="color:inherit;">salsabilaemma.github.io</a></span></div>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn-primary-custom" style="width:fit-content;">
+            <i class="bi bi-send"></i> Hire Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills">
+      <div data-aos="fade-up">
+        <p class="section-label">What I work with</p>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">A combination of technical and creative skills built through real-world projects across web development, design, and AI content production.</p>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="100">
+        <div class="skills-group">
+          <p class="skills-group-title">Familiar Skills</p>
+          <div class="skills-tags">
+            <span class="skill-tag accent">HTML & CSS (85%)</span>
+            <span class="skill-tag accent">PHP (80%)</span>
+            <span class="skill-tag">JavaScript (75%)</span>
+            <span class="skill-tag accent">Laravel (85%)</span>
+            <span class="skill-tag">NextJS (80%)</span>
+            <span class="skill-tag">WordPress/CMS (45%)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PORTFOLIO ── -->
+    <section id="portfolio">
+      <div data-aos="fade-up">
+        <p class="section-label">Selected work</p>
+        <h2 class="section-title">Portfolio</h2>
+        <p class="section-sub">All projects across my career — from internship to present. Filter by category.</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="portfolio-filters" data-aos="fade-up" data-aos-delay="50">
+        <button class="pf-btn active" data-filter="all">All</button>
+        <button class="pf-btn" data-filter="webdev">Web Dev</button>
+        <button class="pf-btn" data-filter="uiux">UI/UX</button>
+        <button class="pf-btn" data-filter="ai">AI Content</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- 1 -->
+        <div class="portfolio-card" data-cat="ai">
+          <div class="portfolio-thumb-placeholder">🎬</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">AI Content Production · 2025–Present</p>
+            <h3 class="portfolio-title">Digital Auto Addict 99 — YouTube Channel</h3>
+            <p class="portfolio-desc">End-to-end AI video content production: prompt engineering with Google Flow (Veo), video editing, narrative scriptwriting, Google TTS voice-over, and SEO-oriented descriptions.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Google Flow (Veo)</span>
+              <span class="portfolio-tag">Video Editing</span>
+              <span class="portfolio-tag">AI Prompting</span>
+              <span class="portfolio-tag">Google TTS</span>
+              <span class="portfolio-tag">SEO</span>
+            </div>
+            <a href="https://www.youtube.com/@DigitalAutoAddict99" target="_blank" class="portfolio-link">Visit channel <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🌐</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Remote Web Development · 2025</p>
+            <h3 class="portfolio-title">Gippsland Websites — Client Projects (Australia)</h3>
+            <p class="portfolio-desc">Remote Laravel developer for a web agency in Victoria, Australia. Handled debugging, feature updates, and frontend development across multiple client websites using Laravel + Statamic CMS.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">Statamic CMS</span>
+              <span class="portfolio-tag">Frontend</span>
+              <span class="portfolio-tag">Remote</span>
+            </div>
+            <a href="https://gippslandwebdesign.com.au" target="_blank" class="portfolio-link">Visit agency <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🎟️</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Full-Stack Web App · 2024–2025</p>
+            <h3 class="portfolio-title">mbaktutik.com — Online Ticketing Platform</h3>
+            <p class="portfolio-desc">Built and maintained a live online ticketing platform for PT. Gita Nada Harmonia. Full-stack development, performance optimization, real-time sales monitoring, cashflow reporting, and client MoU handling.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">PostgreSQL</span>
+              <span class="portfolio-tag">RESTful API</span>
+              <span class="portfolio-tag">Full-Stack</span>
+            </div>
+            <a href="https://mbaktutik.com" target="_blank" class="portfolio-link">Visit site <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="portfolio-card" data-cat="webdev uiux">
+          <div class="portfolio-thumb-placeholder">📱</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">UI/UX + Backend Development · 2024</p>
+            <h3 class="portfolio-title">Cuan Pulsa — Pulsa Conversion App</h3>
+            <p class="portfolio-desc">Designed mobile app UI/UX using Figma and developed the RESTful API backend using Laravel. Covered user flows, wireframes, authentication, transaction logic, and third-party payment integration.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Figma</span>
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">RESTful API</span>
+              <span class="portfolio-tag">Payment Integration</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🏪</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Product Development · 2022–2024</p>
+            <h3 class="portfolio-title">POS Application — PT. Marstech Global</h3>
+            <p class="portfolio-desc">Led development of a Point of Sale (POS) application for the company's clients using Laravel (backend) and NextJS (frontend). Covered the full development lifecycle from feature planning to deployment.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">NextJS</span>
+              <span class="portfolio-tag">Full-Stack</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🏦</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Product Development · 2022–2024</p>
+            <h3 class="portfolio-title">Cooperative Savings & Loan App — PT. Marstech Global</h3>
+            <p class="portfolio-desc">Contributed to a team building a digital savings and loan management system for cooperatives using Laravel and NextJS. Covered core transaction and member management features.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">NextJS</span>
+              <span class="portfolio-tag">Full-Stack</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">📋</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Internal Tool · 2022–2024</p>
+            <h3 class="portfolio-title">MarsOffice — Document & Inventory Management</h3>
+            <p class="portfolio-desc">Built an internal company application for managing official correspondence and inventory using Laravel. Served as the primary document management system for PT. Marstech Global.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">Backend</span>
+              <span class="portfolio-tag">Internal Tool</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="portfolio-card" data-cat="uiux">
+          <div class="portfolio-thumb-placeholder">💳</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">UI Design · 2022</p>
+            <h3 class="portfolio-title">MAKLAT — Digital Wallet (Madiun Kampung Pesilat)</h3>
+            <p class="portfolio-desc">Designed the full mobile UI for MAKLAT, a digital wallet app for the Madiun Kampung Pesilat community under MudaMudi.coop. Delivered in Figma including all screens and user flows.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Figma</span>
+              <span class="portfolio-tag">Mobile UI</span>
+              <span class="portfolio-tag">E-Wallet</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Figma file coming soon</a>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="portfolio-card" data-cat="uiux">
+          <div class="portfolio-thumb-placeholder">📲</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">UI Design · 2022</p>
+            <h3 class="portfolio-title">GAP APPS — Android & Web Interface</h3>
+            <p class="portfolio-desc">Designed the Android and web interface for GAP APPS under MudaMudi.coop, Madiun. Delivered complete UI screens and component sets in Figma.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Figma</span>
+              <span class="portfolio-tag">Android UI</span>
+              <span class="portfolio-tag">Web UI</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Figma file coming soon</a>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🍽️</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Web Development · 2021–2022</p>
+            <h3 class="portfolio-title">Gourmet Chef Consultan — Restaurant Websites</h3>
+            <p class="portfolio-desc">Developed Laravel-based marketing websites (CMS) for multiple restaurants under Gourmet Chef Consultan, Jakarta. Each site featured a content management system for the client to self-manage.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">CMS</span>
+              <span class="portfolio-tag">Marketing Site</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🎨</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Web Development · 2021 — Final Diploma Project</p>
+            <h3 class="portfolio-title">OXT Design — Graphic Design Sales Website</h3>
+            <p class="portfolio-desc">Developed a Laravel-based marketing and e-commerce website for OXT Design, Madiun, along with a separate admin panel for content management. This was also my final diploma project.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">E-Commerce</span>
+              <span class="portfolio-tag">Admin Panel</span>
+              <span class="portfolio-tag">Diploma Project</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">🐄</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">Web Development · 2020</p>
+            <h3 class="portfolio-title">WK66 Farm — Livestock Marketing Website</h3>
+            <p class="portfolio-desc">Built a Laravel-based marketing website for Kandang WK66, Gresik, along with an admin CMS for managing product listings and content independently.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Laravel</span>
+              <span class="portfolio-tag">CMS</span>
+              <span class="portfolio-tag">Marketing Site</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="portfolio-card" data-cat="webdev">
+          <div class="portfolio-thumb-placeholder">💼</div>
+          <div class="portfolio-body">
+            <p class="portfolio-category">IT Internship · 2020</p>
+            <h3 class="portfolio-title">GIRADIA — Company Website & Admin System</h3>
+            <p class="portfolio-desc">During internship at PT. Pelangi Nusantara Multimedia, managed the company website using WordPress and helped build an internal web administration system using PHP, HTML, CSS, and MySQL.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">WordPress</span>
+              <span class="portfolio-tag">PHP</span>
+              <span class="portfolio-tag">MySQL</span>
+              <span class="portfolio-tag">Internship</span>
+            </div>
+            <a href="#" class="portfolio-link" style="opacity:0.4; cursor:not-allowed;">Screenshot coming soon</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── RESUME ── -->
+    <section id="resume">
+      <div data-aos="fade-up">
+        <p class="section-label">My journey</p>
+        <h2 class="section-title">Resume</h2>
+        <p class="section-sub">A summary of my professional experience and educational background.</p>
+      </div>
+
+      <div class="resume-cols" data-aos="fade-up" data-aos-delay="100">
+        <!-- Experience -->
+        <h2 class="text-center" style="width:100%; text-align:center; padding: 2rem 0; color:var(--muted);"> - Soon - </h2>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section id="services">
+      <div data-aos="fade-up">
+        <p class="section-label">What I offer</p>
+        <h2 class="section-title">Services</h2>
+        <p class="section-sub">Available for freelance projects. Let's build something together.</p>
+      </div>
+
+      <div class="services-grid" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-server"></i></div>
+          <p class="service-title">Landing Page for Marketing</p>
+          <p class="service-desc">A specialized web page designed to promote marketing initiatives</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-palette"></i></div>
+          <p class="service-title">UI/UX Design</p>
+          <p class="service-desc">An expert in crafting user-friendly and visually captivating digital experiences</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="bi bi-speedometer"></i></div>
+          <p class="service-title">Custom Web Project</p>
+          <p class="service-desc">A custom web project tailored to meet specific requirements and objectives</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+      <div data-aos="fade-up">
+        <p class="section-label">Let's work together</p>
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">Have a project in mind? Feel free to reach out — I'm open to freelance and remote opportunities.</p>
+      </div>
+
+      <div class="contact-grid" data-aos="fade-up" data-aos-delay="100">
+        <div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+            <div>
+              <p class="contact-label">Email</p>
+              <p class="contact-value"><a href="mailto:devbyemm17@gmail.com">devbyemm17@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-whatsapp"></i></div>
+            <div>
+              <p class="contact-label">WhatsApp</p>
+              <p class="contact-value"><a href="https://wa.me/6283155675867">+62 831-5567-5867</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+            <div>
+              <p class="contact-label">Location</p>
+              <p class="contact-value">Madiun, East Java, Indonesia</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="bi bi-linkedin"></i></div>
+            <div>
+              <p class="contact-label">LinkedIn</p>
+              <p class="contact-value"><a href="https://linkedin.com/in/salsabila-emma-982a5a186">salsabila-emma</a></p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center;">
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:2rem; text-align:center; width:100%;">
+            <div style="font-size:2.5rem; margin-bottom:1rem;">✉️</div>
+            <p style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:0.5rem;">Ready to collaborate?</p>
+            <p style="font-size:0.83rem; color:var(--muted); margin-bottom:1.5rem;">Drop me a message on WhatsApp or email and I'll get back to you as soon as possible.</p>
+            <a href="https://wa.me/6283155675867" class="btn-primary-custom" style="justify-content:center; width:100%;">
+              <i class="bi bi-whatsapp"></i> Message on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p class="footer-copy">
+        © 2025 <strong>Salsabila Emma Nurrachmaddanie</strong> — 
+        <a href="https://github.com/SalsabilaEmma">devbyEmm</a>
+      </p>
+      <p class="footer-copy" style="font-style:italic;">
+        "Be patient, for Allah's promise is true." — Surah Ar-Rum: 60
+      </p>
+    </footer>
+
+  </div><!-- end #main -->
+
+  <a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  <script>
+    AOS.init({ duration: 600, easing: 'ease-out', once: true, offset: 60 });
+
+    // Typed.js
+    const typedEl = document.querySelector('.typed');
+    if (typedEl) {
+      const items = typedEl.getAttribute('data-typed-items').split(',');
+      new Typed('.typed', {
+        strings: items,
+        typeSpeed: 60,
+        backSpeed: 35,
+        backDelay: 2000,
+        loop: true
+      });
+    }
+
+    // Mobile nav
+    const toggle = document.getElementById('navToggle');
+    const sidebar = document.getElementById('sidebar');
+    const icon = document.getElementById('navIcon');
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      icon.className = sidebar.classList.contains('open') ? 'bi bi-x' : 'bi bi-list';
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        icon.className = 'bi bi-list';
+      });
+    });
+
+    // Portfolio filter
+    document.querySelectorAll('.pf-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pf-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+          const cats = card.getAttribute('data-cat') || '';
+          card.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
+        });
+      });
+    });
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+      document.getElementById('backTop').classList.toggle('show', window.scrollY > 300);
+    });
+  </script>
+</body>
+</html>
